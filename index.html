@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inès KEMALA | Portfolio BTS SAM</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nude: {
+                            50: '#FFFFFF',   // Blanc pur
+                            100: '#FDFBF7',  // Crème ultra clair
+                            200: '#F7F4EF',  // Sable très doux
+                            300: '#F3EBE3',  // Champagne lumineux
+                            400: '#E8DFD8',  // Beige nude doux
+                            500: '#D5C7BC',  // Nude rose / Taupe très doux
+                            600: '#A69485',  // Taupe clair élégant
+                            700: '#7E6E60',  // Taupe moyen
+                            800: '#52473E',  // Taupe mat doux
+                            900: '#3A3330',  // Anthracite chaud / Texte principal
+                            950: '#2A2422',  // Fond sombre taupe doux
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(232, 223, 216, 0.6);
+        }
+        .dark .glass {
+            background: rgba(42, 36, 34, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(166, 148, 133, 0.25);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F7F4EF;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #2A2422;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D5C7BC;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A69485;
+        }
+    </style>
+</head>
+<body class="bg-nude-100 text-nude-900 dark:bg-nude-950 dark:text-nude-50 transition-colors duration-300 antialiased selection:bg-nude-400 selection:text-nude-900">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#hero" class="text-2xl font-extrabold tracking-tight flex items-center gap-2 group">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-nude-600 to-nude-400 text-white flex items-center justify-center font-black shadow-sm group-hover:scale-105 transition-transform">
+                    IK
+                </span>
+                <span class="bg-gradient-to-r from-nude-800 via-nude-700 to-nude-600 dark:from-nude-200 dark:to-nude-400 bg-clip-text text-transparent font-bold">
+                    Inès KEMALA
+                </span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-sm">
+                <a href="#about" class="px-3 py-2 rounded-lg hover:text-nude-600 dark:hover:text-nude-300 transition-colors">À propos</a>
+                <a href="#experience" class="px-3 py-2 rounded-lg hover:text-nude-600 dark:hover:text-nude-300 transition-colors">Parcours</a>
+                <a href="#skills" class="px-3 py-2 rounded-lg hover:text-nude-600 dark:hover:text-nude-300 transition-colors">Compétences</a>
+                <a href="#interests" class="px-3 py-2 rounded-lg hover:text-nude-600 dark:hover:text-nude-300 transition-colors">Intérêts</a>
+                <a href="#contact" class="px-3 py-2 rounded-lg hover:text-nude-600 dark:hover:text-nude-300 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Controls -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" aria-label="Basculer le thème" class="p-2.5 rounded-full bg-nude-200 dark:bg-nude-900 text-nude-700 dark:text-nude-300 hover:ring-2 hover:ring-nude-400 transition-all">
+                    <i id="theme-toggle-dark-icon" class="fas fa-moon text-lg hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fas fa-sun text-lg text-amber-500"></i>
+                </button>
+
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-nude-900 bg-nude-300 hover:bg-nude-400 dark:bg-nude-600 dark:text-white dark:hover:bg-nude-700 rounded-lg shadow-sm transition-all">
+                    Me contacter
+                </a>
+
+                <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden p-2 rounded-lg text-nude-700 dark:text-nude-300 hover:bg-nude-100 dark:hover:bg-nude-900 focus:outline-none">
+                    <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-nude-200 dark:border-nude-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-nude-100 dark:hover:bg-nude-900">À propos</a>
+            <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-nude-100 dark:hover:bg-nude-900">Parcours</a>
+            <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-nude-100 dark:hover:bg-nude-900">Compétences</a>
+            <a href="#interests" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-nude-100 dark:hover:bg-nude-900">Centres d'intérêt</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-nude-100 dark:hover:bg-nude-900">Contact</a>
+            <a href="#contact" class="mobile-link block text-center px-4 py-2.5 text-base font-semibold text-white bg-nude-600 rounded-lg">Me contacter</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden py-16">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-nude-300/40 dark:bg-nude-800/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-72 h-72 bg-nude-200/50 dark:bg-nude-900/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nude-50 dark:bg-nude-900/80 border border-nude-400/40 dark:border-nude-700 text-nude-800 dark:text-nude-200 text-xs sm:text-sm font-medium mb-6 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Étudiante en BTS SAM • Recherche d'opportunités
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+                    Inès <span class="bg-gradient-to-r from-nude-800 via-nude-600 to-nude-500 dark:from-nude-100 dark:to-nude-300 bg-clip-text text-transparent">KEMALA</span>
+                </h1>
+
+                <div class="text-xl sm:text-3xl font-semibold text-nude-800 dark:text-nude-200 mb-6 h-10 flex items-center justify-center">
+                    <span id="typing-text" class="border-r-2 border-nude-600 dark:border-nude-400 pr-1"></span>
+                </div>
+
+                <p class="max-w-2xl mx-auto text-base sm:text-lg text-nude-700 dark:text-nude-300 mb-10 leading-relaxed font-normal">
+                    Future manager administrative passionnée par l'organisation, la gestion de projet, les réseaux sociaux et la relation client. Polyvalente, rigoureuse et adaptable.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#experience" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-nude-900 bg-nude-300 hover:bg-nude-400 dark:bg-nude-600 dark:text-white dark:hover:bg-nude-700 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5">
+                        Découvrir mon parcours <i class="fas fa-arrow-down ml-2 text-sm"></i>
+                    </a>
+                    <button onclick="downloadCV()" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-nude-800 dark:text-nude-200 bg-nude-50 dark:bg-nude-900 hover:bg-nude-200 dark:hover:bg-nude-800 rounded-xl border border-nude-300 dark:border-nude-700 transition-all transform hover:-translate-y-0.5 shadow-sm">
+                        <i class="fas fa-file-pdf mr-2 text-nude-600 dark:text-nude-400"></i> Télécharger CV
+                    </button>
+                </div>
+        <!-- Profile Card inside About Section -->
+        <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-lg group border-4 border-nude-300 dark:border-nude-700 bg-gradient-to-tr from-nude-600 via-nude-500 to-nude-400 flex flex-col items-center justify-center text-nude-900 p-6 text-center">
+                <div class="w-24 h-24 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center text-4xl font-black mb-4 border border-white/50 text-nude-900">
+                    IK
+                </div>
+                <h3 class="text-2xl font-bold text-nude-900">Inès KEMALA</h3>
+                <p class="text-sm text-nude-800 font-medium mt-1">BTS Support à l'Action Manageriale</p>
+                <span class="mt-4 px-3 py-1 bg-white/40 rounded-full text-xs font-semibold backdrop-blur-sm text-nude-900">Née le 21/11/2007</span>
+            </div>
+        </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-nude-100/60 dark:bg-nude-900/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">À Propos De Moi</h2>
+                    <div class="w-16 h-1 bg-nude-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Profile Card -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-xl group border-4 border-nude-200 dark:border-nude-800 bg-gradient-to-tr from-nude-700 via-nude-600 to-nude-500 flex flex-col items-center justify-center text-white p-6 text-center">
+                            <div class="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-4xl font-black mb-4 border border-white/30">
+                                IK
+                            </div>
+                            <h3 class="text-2xl font-bold">Inès KEMALA</h3>
+                            <p class="text-sm text-nude-100 mt-1">BTS Support à l'Action Manageriale</p>
+                            <span class="mt-4 px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">Née le 21/11/2007</span>
+                        </div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <h3 class="text-2xl font-bold text-nude-900 dark:text-nude-100">
+                            Assister, organiser et dynamiser la gestion d'entreprise.
+                        </h3>
+                        <p class="text-nude-800/80 dark:text-nude-200/80 leading-relaxed">
+                            Actuellement en préparation du <strong>BTS SAM (Support à l'Action Manageriale)</strong> au Lycée Camille Pissarro à Pontoise, je possède un profil polyvalent et une solide expérience du terrain acquise au cours de multiples stages professionnels.
+                        </p>
+                        <p class="text-nude-800/80 dark:text-nude-200/80 leading-relaxed">
+                            De la gestion administrative à l'animation des réseaux sociaux, en passant par le recrutement et le suivi de planning, je sais m'adapter rapidement aux exigences de chaque secteur (Immobilier, Recrutement, Auto-école, Santé & Éducation).
+                        </p>
+
+                        <!-- Languages Badge Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4">
+                            <div class="p-4 rounded-xl glass border border-nude-200 dark:border-nude-800 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-nude-500/10 text-nude-600 dark:text-nude-400 flex items-center justify-center font-bold">FR</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Français</h4>
+                                    <p class="text-xs text-nude-600/70 dark:text-nude-400/70">Langue maternelle</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl glass border border-nude-200 dark:border-nude-800 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-nude-500/10 text-nude-600 dark:text-nude-400 flex items-center justify-center font-bold">EN</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Anglais</h4>
+                                    <p class="text-xs text-nude-600/70 dark:text-nude-400/70">Niveau professionnel</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl glass border border-nude-200 dark:border-nude-800 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-nude-500/10 text-nude-600 dark:text-nude-400 flex items-center justify-center font-bold">AR</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Arabe</h4>
+                                    <p class="text-xs text-nude-600/70 dark:text-nude-400/70">Langue parlée / Maîtrisée</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Formation Section (Timeline) -->
+        <section id="experience" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Parcours & Expériences</h2>
+                    <div class="w-16 h-1 bg-nude-500 mx-auto mt-4 rounded-full"></div>
+                    <p class="mt-4 text-nude-700/80 dark:text-nude-300/80">Mon itinéraire de formation et mes immersions en entreprise</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Experiences Column -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-xl">
+                                <i class="fas fa-briefcase text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">Expériences Professionnelles</h3>
+                        </div>
+
+                        <div class="relative border-l-2 border-nude-300 dark:border-nude-800 ml-4 pl-6 space-y-8">
+                            
+                            <!-- Exp 1 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-nude-600 dark:bg-nude-400 border-4 border-nude-50 dark:border-nude-950 group-hover:scale-125 transition-transform"></div>
+                                <span class="text-xs font-bold text-nude-600 dark:text-nude-400 uppercase tracking-wider">Franconville</span>
+                                <h4 class="text-lg font-bold text-nude-900 dark:text-nude-100">Stage Polyvalent — Angelimmo</h4>
+                                <p class="text-xs text-nude-600/70 dark:text-nude-400/70 mb-2">Immobilier & Communication</p>
+                                <ul class="list-disc list-inside text-sm text-nude-800/80 dark:text-nude-200/80 space-y-1">
+                                    <li>Gestion et animation des réseaux sociaux.</li>
+                                    <li>Gestion administrative générale de l'agence.</li>
+                                    <li>Mise en ligne des offres d'emploi et suivi des activités immobilières.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Exp 2 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-nude-600 dark:bg-nude-400 border-4 border-nude-50 dark:border-nude-950 group-hover:scale-125 transition-transform"></div>
+                                <span class="text-xs font-bold text-nude-600 dark:text-nude-400 uppercase tracking-wider">Saint-Ouen-L'aumône</span>
+                                <h4 class="text-lg font-bold text-nude-900 dark:text-nude-100">Stage en Recrutement — Leadinside</h4>
+                                <p class="text-xs text-nude-600/70 dark:text-nude-400/70 mb-2">Ressources Humaines & Gestion</p>
+                                <ul class="list-disc list-inside text-sm text-nude-800/80 dark:text-nude-200/80 space-y-1">
+                                    <li>Relation client et accueil des candidats.</li>
+                                    <li>Recrutement temporaire et gestion administrative des dossiers.</li>
+                                    <li>Gestion de documents et participation aux projets RH.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Exp 3 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-nude-600 dark:bg-nude-400 border-4 border-nude-50 dark:border-nude-950 group-hover:scale-125 transition-transform"></div>
+                                <span class="text-xs font-bold text-nude-600 dark:text-nude-400 uppercase tracking-wider">Enghien-les-Bains</span>
+                                <h4 class="text-lg font-bold text-nude-900 dark:text-nude-100">Stage Administratif — XDrive Auto-École</h4>
+                                <p class="text-xs text-nude-600/70 dark:text-nude-400/70 mb-2">Accueil & Organisation</p>
+                                <ul class="list-disc list-inside text-sm text-nude-800/80 dark:text-nude-200/80 space-y-1">
+                                    <li>Gestion du planning des moniteurs et élèves.</li>
+                                    <li>Accueil téléphonique et physique, relation client.</li>
+                                    <li>Gestion et archivage des documents administratifs.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Exp 4 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-nude-600 dark:bg-nude-400 border-4 border-nude-50 dark:border-nude-950 group-hover:scale-125 transition-transform"></div>
+                                <span class="text-xs font-bold text-nude-600 dark:text-nude-400 uppercase tracking-wider">Val-d'Oise (Multiple)</span>
+                                <h4 class="text-lg font-bold text-nude-900 dark:text-nude-100">Stages Accompagnement & Soins (Bac Pro)</h4>
+                                <p class="text-xs text-nude-600/70 dark:text-nude-400/70 mb-2">EHPAD, Services à la personne & Écoles</p>
+                                <ul class="list-disc list-inside text-sm text-nude-800/80 dark:text-nude-200/80 space-y-1">
+                                    <li><strong>EHPAD :</strong> Les Lys (Pierrelaye) & La Châtaigneraie (Cormeilles-en-Parisis).</li>
+                                    <li><strong>Auxiliaire de vie :</strong> Axeo Service (Taverny).</li>
+                                    <li><strong>Écoles Maternelles :</strong> Anatole France (Ermont) & Marie Curie (Pierrelaye).</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Formation Column -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-xl">
+                                <i class="fas fa-graduation-cap text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">Formation & Diplômes</h3>
+                        </div>
+
+                        <div class="relative border-l-2 border-nude-300 dark:border-nude-800 ml-4 pl-6 space-y-8">
+                            
+                            <!-- Form 1 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-nude-600 dark:bg-nude-400 border-4 border-nude-50 dark:border-nude-950 group-hover:scale-125 transition-transform"></div>
+                                <span class="text-xs font-bold text-nude-600 dark:text-nude-400 uppercase tracking-wider">2025 — En cours</span>
+                                <h4 class="text-lg font-bold text-nude-900 dark:text-nude-100">BTS SAM (Support à l'Action Manageriale)</h4>
+                                <p class="text-sm font-semibold text-nude-700 dark:text-nude-300">Lycée Camille Pissarro — Pontoise</p>
+                                <p class="text-xs text-nude-600/70 dark:text-nude-400/70 mt-1">Formation axée sur la gestion de projets, la communication globale, la coordination des équipes et le soutien stratégique aux managers.</p>
+                            </div>
+
+                            <!-- Form 2 -->
+                            <div class="relative group">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-nude-600 dark:bg-nude-400 border-4 border-nude-50 dark:border-nude-950 group-hover:scale-125 transition-transform"></div>
+                                <span class="text-xs font-bold text-nude-600 dark:text-nude-400 uppercase tracking-wider">2022 — 2025</span>
+                                <h4 class="text-lg font-bold text-nude-900 dark:text-nude-100">Baccalauréat Professionnel</h4>
+                                <p class="text-sm font-semibold text-nude-700 dark:text-nude-300">Lycée Louis Jouvet — Taverny</p>
+                                <p class="text-xs text-nude-600/70 dark:text-nude-400/70 mt-1">Acquisition de compétences solides en accompagnement, organisation et gestion de projets de proximité.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-nude-100/60 dark:bg-nude-900/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Mes Compétences</h2>
+                    <div class="w-16 h-1 bg-nude-500 mx-auto mt-4 rounded-full"></div>
+                    <p class="mt-4 text-nude-700/80 dark:text-nude-300/80">Mes atouts organisationnels et relationnels</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Soft Skills -->
+                    <div class="glass p-6 rounded-2xl shadow-sm border border-nude-200 dark:border-nude-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-xl">
+                                <i class="fas fa-user-gear text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Savoir-être & Organisation</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Gestion du temps & des priorités</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Capacités d'organisation élevées</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Grande capacité d'adaptation</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Curiosité d'apprentissage</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Hard / Operational Skills -->
+                    <div class="glass p-6 rounded-2xl shadow-sm border border-nude-200 dark:border-nude-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-xl">
+                                <i class="fas fa-tasks text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Compétences Opérationnelles</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Gestion des documents & archivage</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Gestion de planning & appels</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Relation client & accueil physique</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Recrutement temporaire & suivi</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech & Digital Skills -->
+                    <div class="glass p-6 rounded-2xl shadow-sm border border-nude-200 dark:border-nude-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-xl">
+                                <i class="fas fa-hashtag text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Outils & Réseaux</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Gestion des réseaux sociaux</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Maîtrise des outils numériques</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Bureautique (Word, Excel, PowerPoint)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-nude-600 dark:text-nude-400"></i>
+                                <span class="text-sm font-semibold">Création de visuels simples & annonces</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Centres D'Intérêt</h2>
+                    <div class="w-16 h-1 bg-nude-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Littérature -->
+                    <div class="p-8 rounded-2xl glass text-center border border-nude-200 dark:border-nude-800 hover:border-nude-500 transition-all duration-300 shadow-sm">
+                        <div class="w-16 h-16 mx-auto bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-2xl flex items-center justify-center text-3xl mb-4">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Littérature</h3>
+                        <p class="text-nude-700/80 dark:text-nude-300/80 text-sm">Développement de l'esprit d'analyse, curiosité intellectuelle et rédaction soignée.</p>
+                    </div>
+
+                    <!-- Sport -->
+                    <div class="p-8 rounded-2xl glass text-center border border-nude-200 dark:border-nude-800 hover:border-nude-500 transition-all duration-300 shadow-sm">
+                        <div class="w-16 h-16 mx-auto bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-2xl flex items-center justify-center text-3xl mb-4">
+                            <i class="fas fa-person-running"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Sport</h3>
+                        <p class="text-nude-700/80 dark:text-nude-300/80 text-sm">Discipline, rigueur, goût de la réflexion et persévérance au quotidien.</p>
+                    </div>
+
+                    <!-- Design -->
+                    <div class="p-8 rounded-2xl glass text-center border border-nude-200 dark:border-nude-800 hover:border-nude-500 transition-all duration-300 shadow-sm">
+                        <div class="w-16 h-16 mx-auto bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-2xl flex items-center justify-center text-3xl mb-4">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Design</h3>
+                        <p class="text-nude-700/80 dark:text-nude-300/80 text-sm">Sens de l'esthétique appliqué à la présentation de documents et à la communication visuelle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-nude-100/60 dark:bg-nude-900/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Me Contacter</h2>
+                    <div class="w-16 h-1 bg-nude-500 mx-auto mt-4 rounded-full"></div>
+                    <p class="mt-4 text-nude-700/80 dark:text-nude-300/80">N'hésitez pas à me contacter pour toute opportunité ou échange professionnel</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Direct Contact Details -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="glass p-8 rounded-2xl space-y-6 border border-nude-200 dark:border-nude-800">
+                            <h3 class="text-2xl font-bold mb-4">Mes Coordonnées</h3>
+
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-lg">
+                                        <i class="fas fa-phone text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-nude-600/70 dark:text-nude-400/70 font-semibold uppercase">Téléphone</span>
+                                        <a href="tel:0769897714" class="font-medium hover:text-nude-600 text-base">07 69 89 77 14</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-lg">
+                                        <i class="fas fa-envelope text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-nude-600/70 dark:text-nude-400/70 font-semibold uppercase">Email</span>
+                                        <a href="mailto:kemalaines5@gmail.com" class="font-medium hover:text-nude-600 text-base">kemalaines5@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="p-3 bg-nude-500/10 text-nude-600 dark:text-nude-400 rounded-lg">
+                                        <i class="fas fa-location-dot text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-nude-600/70 dark:text-nude-400/70 font-semibold uppercase">Localisation</span>
+                                        <span class="font-medium text-base">Île-de-France (Val-d'Oise)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" class="glass p-8 rounded-2xl space-y-6 border border-nude-200 dark:border-nude-800">
+                            <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium mb-2">Votre Nom</label>
+                                    <input type="text" id="name" required placeholder="Ex: Marie Dupont" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-nude-950 border border-nude-200 dark:border-nude-800 focus:ring-2 focus:ring-nude-500 focus:outline-none transition-all">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium mb-2">Votre Email</label>
+                                    <input type="email" id="email" required placeholder="votre@email.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-nude-950 border border-nude-200 dark:border-nude-800 focus:ring-2 focus:ring-nude-500 focus:outline-none transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-sm font-medium mb-2">Sujet</label>
+                                <input type="text" id="subject" required placeholder="Opportunité de stage / d'emploi" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-nude-950 border border-nude-200 dark:border-nude-800 focus:ring-2 focus:ring-nude-500 focus:outline-none transition-all">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                                <textarea id="message" rows="4" required placeholder="Votre message..." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-nude-950 border border-nude-200 dark:border-nude-800 focus:ring-2 focus:ring-nude-500 focus:outline-none transition-all"></textarea>
+                            </div>
+
+        <!-- Buttons and Interactive Components -->
+        <button type="submit" class="w-full py-4 text-base font-bold text-nude-900 bg-nude-300 hover:bg-nude-400 dark:bg-nude-600 dark:text-white dark:hover:bg-nude-700 rounded-xl shadow-md transition-all">
+            Envoyer le message <i class="fas fa-paper-plane ml-2"></i>
+        </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-nude-200 dark:bg-nude-950 text-nude-700 dark:text-nude-400 py-10 border-t border-nude-300 dark:border-nude-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <span class="text-lg font-bold text-nude-900 dark:text-nude-100">Inès KEMALA</span>
+                <p class="text-xs mt-1">Étudiante BTS SAM — Portfolio Professionnel © 2026</p>
+            </div>
+
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-3 bg-nude-300 dark:bg-nude-900 hover:bg-nude-400 text-nude-900 dark:text-white rounded-full transition-colors" aria-label="Retour en haut">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Theme Switcher ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function updateThemeIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+            } else {
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            updateThemeIcons();
+        });
+        updateThemeIcons();
+
+        // --- 2. Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 3. Typing Effect ---
+        const typingElement = document.getElementById('typing-text');
+        const words = ["Étudiante BTS SAM", "Support à l'Action Manageriale", "Gestion & Réseaux Sociaux", "Gestion de Planning & Relation Client"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        typeEffect();
+
+        // --- 4. Contact Form Feedback ---
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formFeedback.textContent = "Merci pour votre message ! Inès vous répondra dans les plus brefs délais.";
+            formFeedback.className = "p-4 rounded-xl text-sm font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20";
+            formFeedback.classList.remove('hidden');
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                formFeedback.classList.add('hidden');
+            }, 5000);
+        });
+
+        // --- 5. Download CV Helper ---
+        function downloadCV() {
+            const feedback = document.createElement('div');
+            feedback.className = "fixed bottom-5 right-5 bg-nude-700 text-white px-6 py-3 rounded-xl shadow-xl z-50 text-sm font-semibold flex items-center gap-2 animate-bounce";
+            feedback.innerHTML = '<i class="fas fa-file-arrow-down"></i> Téléchargement du CV d\'Inès KEMALA...';
+            document.body.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 3500);
+        }
+    </script>
+</body>
+</html>
